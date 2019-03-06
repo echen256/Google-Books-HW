@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from './../utils/API.js';
 import "./../App.css"
+import { Z_FULL_FLUSH } from 'zlib';
 
 
 
@@ -8,7 +9,8 @@ export class Book extends Component {
     state = {
         searching: true,
         volumeInfo: "",
-        link : ""
+        link : "",
+        saved: false
     }
 
     constructor(props) {
@@ -38,7 +40,8 @@ export class Book extends Component {
             date: info.publishedDate,
             id : info.id
         }
- 
+        this.setState({saved: true});
+        var self = this;
         API.saveBook(book);
     }
 
@@ -50,7 +53,7 @@ export class Book extends Component {
 
             <a href = {this.state.link}>View?</a>
 
-            <div> {this.state.searching ? <div onClick={this.saveBook}> Save?</div> : <div onClick={this.deleteBook}> Delete?</div>}</div>
+            <div> {this.state.searching ? <div onClick={this.saveBook}> {this.state.saved ? <div> Save?</div> : <div> Saved! </div>} </div> : <div onClick={this.deleteBook}> Delete?</div>}</div>
 
         </div>
     }

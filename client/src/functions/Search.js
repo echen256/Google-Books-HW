@@ -15,6 +15,12 @@ export class Search extends Component {
         books: []
     }
 
+    update = () => {
+        API.getBooks()
+        .then(res =>
+            this.setState({ books: res.data})).catch(err => console.log(err));
+    }
+
     
 
     search(event) {
@@ -41,6 +47,10 @@ export class Search extends Component {
 
     render() {
         return <div>
+            <div>
+                <a href = "/">Search</a>
+                <a href = "/saved">Saved</a>
+            </div>
             <div><form onSubmit={this.search}>
                 <label> Search</label>
                 <input type="text" id="serach" name="search"></input>
@@ -50,7 +60,7 @@ export class Search extends Component {
             <div> BOOKS
             <div>
                 {
-                    this.state.books.map(book => <Book searching = {true} volumeInfo={book.volumeInfo}  />)
+                    this.state.books.map(book => <Book searching = {true} volumeInfo={book.volumeInfo} update = {this.update} />)
                 }
             </div>
 

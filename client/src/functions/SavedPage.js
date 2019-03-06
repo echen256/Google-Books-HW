@@ -29,7 +29,10 @@ export class SavedPage extends Component {
 
     render() {
         return <div>
-
+            <div>
+                <a href = "/">Search</a>
+                <a href = "/saved">Saved</a>
+            </div>
             <div> BOOKS
             <div>
                 {
