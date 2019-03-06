@@ -41,7 +41,7 @@ export class Book extends Component {
             id : info.id
         }
         this.setState({saved: true});
-        var self = this;
+        console.log(book);
         API.saveBook(book);
     }
 
@@ -53,7 +53,7 @@ export class Book extends Component {
 
             <a href = {this.state.link}>View?</a>
 
-            <div> {this.state.searching ? <div onClick={this.saveBook}> {this.state.saved ? <div> Save?</div> : <div> Saved! </div>} </div> : <div onClick={this.deleteBook}> Delete?</div>}</div>
+            <div> {this.state.searching ? <button onClick={this.saveBook}> {this.state.saved ? <div> Save!</div> : <div> Saved? </div>} </button> : <button onClick={this.deleteBook}> Delete?</button>}</div>
 
         </div>
     }
