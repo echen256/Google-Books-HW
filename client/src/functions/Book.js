@@ -53,7 +53,7 @@ export class Book extends Component {
 
             <a href = {this.state.link}>View?</a>
 
-            <div> {this.state.searching ? <button onClick={this.saveBook}> {this.state.saved ? <div> Save!</div> : <div> Saved? </div>} </button> : <button onClick={this.deleteBook}> Delete?</button>}</div>
+            <div> {this.state.searching ? <button onClick={this.saveBook}> {this.state.saved ? <div> Saved!</div> : <div> Save? </div>} </button> : <button onClick={this.deleteBook}> Delete?</button>}</div>
 
         </div>
     }
